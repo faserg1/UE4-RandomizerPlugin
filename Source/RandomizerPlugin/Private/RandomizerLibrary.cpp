@@ -9,14 +9,14 @@ URandomizerLibrary::URandomizerLibrary(class FObjectInitializer const &objInit) 
 
 }
 
-int URandomizerLibrary::NextRandomInt(URStream *rstream)
+int32 URandomizerLibrary::NextRandomInt(URStream *rstream)
 {
-    return NextRandomIntInRange(rstream, std::numeric_limits<int>::min(), std::numeric_limits<int>::max());
+    return NextRandomIntInRange(rstream, std::numeric_limits<int32>::min(), std::numeric_limits<int32>::max());
 }
 
-int URandomizerLibrary::NextRandomIntInRange(URStream *rstream, int min, int max)
+int32 URandomizerLibrary::NextRandomIntInRange(URStream *rstream, int32 min, int32 max)
 {
-    std::uniform_int_distribution<int> d(min, max);
+    std::uniform_int_distribution<int32> d(min, max);
     return d(rstream->GetData()->engine);
 }
 
@@ -59,6 +59,36 @@ FVector URandomizerLibrary::NextRandomVectorCubicInRange(class URStream *rStream
     std::uniform_real_distribution<float> d(min, max);
     float temp = d(rStream->GetData()->engine);
     return FVector(temp, temp, temp);
+}
+
+
+FIntVector URandomizerLibrary::NextRandomIntVector(class URStream *rStream)
+{
+    return NextRandomIntVectorInFlatRange(rStream, std::numeric_limits<int32>::min(), std::numeric_limits<int32>::max());
+}
+
+FIntVector URandomizerLibrary::NextRandomIntVectorInRange(class URStream *rStream, FIntVector min, FIntVector max)
+{
+    std::uniform_int_distribution<int32> dx(min.X, max.X), dy(min.Y, max.Y), dz(min.Z, max.Z);
+    return FIntVector(dx(rStream->GetData()->engine), dy(rStream->GetData()->engine), dz(rStream->GetData()->engine));
+}
+
+FIntVector URandomizerLibrary::NextRandomIntVectorInFlatRange(class URStream *rStream, int32 min, int32 max)
+{
+    std::uniform_int_distribution<int32> d(min, max);
+    return FIntVector(d(rStream->GetData()->engine), d(rStream->GetData()->engine), d(rStream->GetData()->engine));
+}
+
+FIntVector URandomizerLibrary::NextRandomIntVectorCubic(class URStream *rStream)
+{
+    return NextRandomIntVectorCubicInRange(rStream, std::numeric_limits<int32>::min(), std::numeric_limits<int32>::max());
+}
+
+FIntVector URandomizerLibrary::NextRandomIntVectorCubicInRange(class URStream *rStream, int32 min, int32 max)
+{
+    std::uniform_int_distribution<int32> d(min, max);
+    int32 temp = d(rStream->GetData()->engine);
+    return FIntVector(temp, temp, temp);
 }
 
 URStream *URandomizerLibrary::CreateRStream()
