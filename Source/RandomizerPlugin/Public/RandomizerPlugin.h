@@ -4,7 +4,7 @@
 
 #include "Modules/ModuleManager.h"
 
-class FRandomizerPluginModule : public IModuleInterface
+class RANDOMIZERPLUGIN_API FRandomizerPluginModule : public IModuleInterface
 {
 public:
 	void StartupModule() override;

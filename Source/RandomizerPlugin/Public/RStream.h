@@ -3,8 +3,8 @@
 #include "UObject/NoExportTypes.h"
 #include "RStream.generated.h"
 
-UCLASS()
-class URStream : public UObject
+UCLASS(notplaceable, Transient, BlueprintType)
+class RANDOMIZERPLUGIN_API URStream : public UObject
 {
 	GENERATED_UCLASS_BODY()
 public:

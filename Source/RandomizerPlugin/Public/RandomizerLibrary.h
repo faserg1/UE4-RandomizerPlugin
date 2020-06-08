@@ -4,7 +4,7 @@
 #include "RandomizerLibrary.generated.h"
 
 UCLASS()
-class URandomizerLibrary : public UBlueprintFunctionLibrary
+class RANDOMIZERPLUGIN_API URandomizerLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 public:
