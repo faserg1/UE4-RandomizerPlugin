@@ -43,6 +43,15 @@ FVector URandomizerLibrary::NextRandomVectorInRange(class URStream *rStream, FVe
     return FVector(dx(rStream->GetData()->engine), dy(rStream->GetData()->engine), dz(rStream->GetData()->engine));
 }
 
+FVector URandomizerLibrary::NextRandomVectorInRangeOrigin(class URStream *rStream, FVector origin, FVector boxSize)
+{
+    std::uniform_real_distribution<float>
+        dx(origin.X - boxSize.X / 2.f, origin.X + boxSize.X / 2.f),
+        dy(origin.Y - boxSize.Y / 2.f, origin.Y + boxSize.Y / 2.f),
+        dz(origin.Z - boxSize.Z / 2.f, origin.Z + boxSize.Z / 2.f);
+    return FVector(dx(rStream->GetData()->engine), dy(rStream->GetData()->engine), dz(rStream->GetData()->engine));
+}
+
 FVector URandomizerLibrary::NextRandomVectorInFlatRange(class URStream *rStream, float min, float max)
 {
     std::uniform_real_distribution<float> d(min, max);
@@ -70,6 +79,15 @@ FIntVector URandomizerLibrary::NextRandomIntVector(class URStream *rStream)
 FIntVector URandomizerLibrary::NextRandomIntVectorInRange(class URStream *rStream, FIntVector min, FIntVector max)
 {
     std::uniform_int_distribution<int32> dx(min.X, max.X), dy(min.Y, max.Y), dz(min.Z, max.Z);
+    return FIntVector(dx(rStream->GetData()->engine), dy(rStream->GetData()->engine), dz(rStream->GetData()->engine));
+}
+
+FIntVector URandomizerLibrary::NextRandomIntVectorInRangeOrigin(class URStream *rStream, FIntVector origin, FIntVector boxSize)
+{
+    std::uniform_int_distribution<int32> 
+        dx(origin.X - boxSize.X / 2.f, origin.X + boxSize.X / 2.f),
+        dy(origin.Y - boxSize.Y / 2.f, origin.Y + boxSize.Y / 2.f),
+        dz(origin.Z - boxSize.Z / 2.f, origin.Z + boxSize.Z / 2.f);
     return FIntVector(dx(rStream->GetData()->engine), dy(rStream->GetData()->engine), dz(rStream->GetData()->engine));
 }
 

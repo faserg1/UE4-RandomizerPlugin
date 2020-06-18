@@ -23,6 +23,8 @@ public:
 	UFUNCTION(BlueprintCallable, meta=(DefaultToSelf, HideSelfPin), Category="Math|Randomizer")
 	static FVector NextRandomVectorInRange(class URStream *rStream, FVector min, FVector max);
 	UFUNCTION(BlueprintCallable, meta=(DefaultToSelf, HideSelfPin), Category="Math|Randomizer")
+	static FVector NextRandomVectorInRangeOrigin(class URStream *rStream, FVector origin, FVector boxSize);
+	UFUNCTION(BlueprintCallable, meta=(DefaultToSelf, HideSelfPin), Category="Math|Randomizer")
 	static FVector NextRandomVectorInFlatRange(class URStream *rStream, float min, float max);
 
 	UFUNCTION(BlueprintCallable, meta=(DefaultToSelf, HideSelfPin), Category="Math|Randomizer")
@@ -34,6 +36,8 @@ public:
 	static FIntVector NextRandomIntVector(class URStream *rStream);
 	UFUNCTION(BlueprintCallable, meta=(DefaultToSelf, HideSelfPin), Category="Math|Randomizer")
 	static FIntVector NextRandomIntVectorInRange(class URStream *rStream, FIntVector min, FIntVector max);
+	UFUNCTION(BlueprintCallable, meta=(DefaultToSelf, HideSelfPin), Category="Math|Randomizer")
+	static FIntVector NextRandomIntVectorInRangeOrigin(class URStream *rStream, FIntVector origin, FIntVector boxSize);
 	UFUNCTION(BlueprintCallable, meta=(DefaultToSelf, HideSelfPin), Category="Math|Randomizer")
 	static FIntVector NextRandomIntVectorInFlatRange(class URStream *rStream, int32 min, int32 max);
 
